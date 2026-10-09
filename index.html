@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>JAWAD Equine Hospital</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#ECECEC;--card:#FAFAFA;--mut:#8c8c8c;--g:#1F3D2B;--gold:#B8975A;--e:cubic-bezier(.2,0,0,1)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:#cfcfcf;font:15px/1.4 Inter,system-ui,sans-serif;color:#111}
+#app{max-width:430px;margin:0 auto;min-height:100vh;background:var(--bg);padding:calc(14px + env(safe-area-inset-top)) 14px 120px}
+@media(min-width:460px){#app{margin:18px auto;border-radius:36px;min-height:calc(100vh - 36px)}}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;transition:all .3s var(--e)}button:active{transform:scale(.95)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+.logo{display:flex;align-items:center;gap:9px;font-weight:600;letter-spacing:.02em}.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#f0b252,#c4571a);display:grid;place-items:center;color:#fff;font-style:normal}
+.logo small{display:block;font-weight:400;color:var(--mut);font-size:11px;letter-spacing:.06em}
+h1{font-size:40px;font-weight:500;letter-spacing:-.04em;margin:12px 4px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.card{background:var(--card);border-radius:30px;padding:20px;margin-bottom:14px;box-shadow:inset 0 1px 0 #fff,0 10px 28px rgba(0,0,0,.06)}
+.card h3{margin:0;font-size:19px;font-weight:500}.big{font-size:52px;font-weight:500;letter-spacing:-.045em;line-height:1}
+.mut{color:var(--mut)}.sm{font-size:13px}
+.pill{border-radius:99px;padding:9px 15px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.07);font-size:13px;white-space:nowrap}.pill.on{background:#111;color:#fff}
+.more{width:40px;height:40px;border-radius:50%;border:1px solid #dcdcdc}
+.ring{width:44px;height:44px;border-radius:50%;padding:2.5px;background:conic-gradient(#6a3df0,#f0623a,#f0b252,#6a3df0);flex:none}.av{width:100%;height:100%;border-radius:50%;background:#e8e2d4;display:grid;place-items:center;font-size:20px;border:2px solid #fff}
+.item{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid #ececec;width:100%;text-align:left}.item:first-child{border-top:0}.item .t{flex:1;min-width:0}.item .t b{font-weight:500;display:block}
+.ch{border-radius:99px;padding:4px 10px;font-size:12px;font-weight:500;white-space:nowrap}
+.c-red{background:#fde8e8;color:#b4232a}.c-amb{background:#fdf0dc;color:#9a5a05}.c-grn{background:#def5e6;color:#14703a}.c-blu{background:#e0eaff;color:#1d4fb8}.c-gry{background:#ececec;color:#666}
+input,select{width:100%;height:52px;border:0;border-bottom:2px solid #8c8c8c;border-radius:12px 12px 0 0;background:#e6e6e6;padding:0 14px;font:inherit;margin:4px 0 12px}input:focus,select:focus{border-color:var(--g)}
+.srch{border-radius:99px;border:0;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:0 20px;margin-bottom:10px}
+.btn{width:100%;border-radius:99px;padding:15px;background:var(--g);color:#fff;font-weight:500;margin:6px 0}.btn.o{background:none;border:1px solid #bbb;color:var(--g)}.btn:disabled{opacity:.5}
+nav{position:fixed;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:402px;display:flex;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border-radius:99px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+nav button{flex:1;padding:12px 4px;border-radius:99px;font-size:12.5px}nav button.on{background:#111;color:#fff}
+.sh{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:flex-end;justify-content:center;z-index:10}.sh.open{display:flex}
+.sh>div{background:var(--card);width:100%;max-width:430px;border-radius:32px 32px 0 0;padding:22px 20px calc(24px + env(safe-area-inset-bottom));max-height:90vh;overflow:auto}
+#toast{position:fixed;top:14px;left:50%;transform:translate(-50%,-90px);background:#111;color:#fff;padding:12px 18px;border-radius:99px;font-size:14px;z-index:20;transition:transform .4s var(--e);max-width:92%}#toast.s{transform:translate(-50%,0)}
+#login{text-align:center;padding-top:18vh}#login .logo{justify-content:center;font-size:20px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style></head><body>
+<div id="app">
+ <div id="login"><div class="logo"><i>J</i><div>JAWAD EQUINE HOSPITAL<small>CLINICAL MANAGEMENT SYSTEM</small></div></div>
+  <form onsubmit="login(event)" style="text-align:left;margin-top:28px">
+   <label class="mut sm" for="lu">Username</label><input id="lu" autocomplete="username" autocapitalize="none" autocorrect="off" required>
+   <label class="mut sm" for="lp">Password</label><input id="lp" type="password" autocomplete="current-password" required>
+   <p class="mut" id="lm" style="text-align:center;min-height:20px"></p><button class="btn" id="lb">Sign in</button></form></div>
+ <div id="main" hidden><div class="row" style="margin:2px 4px"><div class="logo"><i>J</i><div>JAWAD<small id="who"></small></div></div><button class="more" onclick="logout()" aria-label="Sign out">⏻</button></div><main id="v"></main></div>
+</div>
+<nav id="nav" hidden></nav><div class="sh" id="sh" onclick="if(event.target===this)closeSh()"><div id="shc"></div></div><div id="toast"></div>
+<script src="config.js"></script>
+<script>
+const $=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let tok=localStorage.getItem('jtok'),me,view='home',q='',pg=1,tm,fcb,CV=[],HV=[];
+const opts=a=>a.map(x=>[x,x]);
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('s');setTimeout(()=>e.classList.remove('s'),2800)}
+const sh=h=>{$('#shc').innerHTML=h;$('#sh').classList.add('open')},closeSh=()=>$('#sh').classList.remove('open');
+/* every request goes to the hidden helper; it checks the login and saves under the admin account */
+async function call(fn,args){
+ let r;try{r=await (await fetch(CFG.API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn,args:args||{},token:tok})})).json()}
+ catch(e){throw Error('No connection. Your information has not been cleared — please try again.')}
+ if(r.code=='AUTH'&&fn!='login'){logout();throw Error(r.error)}
+ if(!r.ok)throw Error(r.error||'Something went wrong');return r.data}
+async function login(ev){ev.preventDefault();const b=$('#lb');b.disabled=true;$('#lm').textContent='Signing in…';
+ try{const r=await call('login',{username:$('#lu').value,password:$('#lp').value});tok=r.token;localStorage.setItem('jtok',tok);await boot()}catch(e){$('#lm').textContent=e.message}b.disabled=false}
+async function boot(){me=await call('getCurrentUser');$('#login').hidden=true;$('#main').hidden=false;$('#nav').hidden=false;$('#who').textContent=me.Full_Name;render()}
+function logout(){localStorage.removeItem('jtok');location.reload()}
+if(tok)boot().catch(()=>{});
+const isAdmin=()=>me&&me.Role=='ADMIN';
+const chip=s=>`<span class="ch ${{Hospitalized:'c-red',Open:'c-blu','Follow-up':'c-amb',Closed:'c-gry',Critical:'c-red',Urgent:'c-amb'}[s]||'c-gry'}">${E(s)}</span>`;
+const V={};
+async function render(){
+ const nav=[['home','Home'],['cases','Cases'],['horses','Horses']];if(isAdmin())nav.push(['admin','Admin']);
+ $('#nav').innerHTML=nav.map(n=>`<button class="${view==n[0]?'on':''}" onclick="view='${n[0]}';q='';pg=1;render()">${n[1]}</button>`).join('');
+ $('#v').innerHTML='<p class="mut" style="margin:30px">Loading…</p>';
+ try{$('#v').innerHTML=await V[view]();if(view=='cases'||view=='horses')loadList()}catch(e){$('#v').innerHTML=`<div class="card"><h3>Could not load</h3><p class="mut">${E(e.message)}</p><button class="btn" onclick="render()">Try again</button></div>`}}
+V.home=async()=>{const d=await call('getDashboard');
+ return `<h1>Hello, ${E(me.Full_Name.split(' ')[0])}</h1><div class="card"><h3>Active cases</h3><div class="big" style="margin:18px 0 6px">${d.active}</div><span class="mut sm">${d.hospitalized} hospitalized · ${d.horses} horses on file</span></div>
+ <div class="card"><div class="row"><h3>Attention</h3>${chip(d.urgent.length+' urgent')}</div>${d.urgent.length?d.urgent.map(c=>`<div class="item"><div class="t"><b>${E(c.Horse_Name)}</b><span class="mut sm">${E(c.Primary_Complaint)} · ${E(c.Case_ID)}</span></div>${chip(c.Priority)}</div>`).join(''):'<p class="mut">Nothing urgent.</p>'}</div>
+ <button class="btn o" onclick="chPw()">Change my password</button>`};
+const shell=(t,ph,nb,nf)=>`<h1>${t}</h1><input class="srch" placeholder="${ph}" oninput="onq(this.value)" aria-label="Search"><button class="btn" onclick="${nf}()">${nb}</button><div class="card" id="lst" style="padding:6px 18px"><p class="mut">Loading…</p></div>`;
+V.cases=async()=>shell('Cases','Search horse, case, complaint…','+ New case','newCase');
+V.horses=async()=>shell('Horses','Search horse, owner, phone…','+ New horse','newHorse');
+function onq(v){clearTimeout(tm);tm=setTimeout(()=>{q=v;pg=1;loadList()},350)}
+const pager=r=>r.total>20?`<div class="row" style="padding:12px 0"><button class="pill" onclick="pg--;loadList()" ${pg<2?'disabled':''}>‹ Prev</button><span class="mut sm">${r.page}/${Math.ceil(r.total/20)}</span><button class="pill" onclick="pg++;loadList()" ${r.page*20>=r.total?'disabled':''}>Next ›</button></div>`:'';
+async function loadList(){const el=$('#lst'),c=view=='cases';
+ try{const r=await call(c?'casesView':'horsesView',{q,page:pg});if(c)CV=r.items;else HV=r.items;
+  el.innerHTML=(r.items.length?r.items.map((x,i)=>c?`<button class="item" onclick="caseSheet(${i})"><div class="ring"><div class="av">🐴</div></div><div class="t"><b>${E(x.Horse_Name)}</b><span class="mut sm">${E(x.Case_ID)} · ${E(x.Primary_Complaint)}</span></div>${chip(x.Status)}</button>`
+   :`<button class="item" onclick="horseSheet(${i})"><div class="ring"><div class="av">🐎</div></div><div class="t"><b>${E(x.Horse_Name)}</b><span class="mut sm">${E(x.Breed)} · ${E(x.Owner_Name)}</span></div></button>`).join(''):'<p class="mut">Nothing found.</p>')+pager(r)
+ }catch(e){el.innerHTML=`<p class="mut">${E(e.message)}</p>`}}
+let UL=[];
+V.admin=async()=>{const [U,F]=await Promise.all([call('listUsers'),call('listFarms')]);UL=U;
+ return `<h1>Admin</h1><div class="card"><div class="row"><h3>Users</h3><button class="pill" onclick="newUser()">+ Add</button></div>
+ ${U.map((u,i)=>`<div class="item"><div class="t"><b>${E(u.Full_Name)}</b><span class="mut sm">@${E(u.Google_Email)} · ${E(u.Role)}${u.Active?'':' · INACTIVE'}</span></div><button class="pill" onclick="userMenu(${i})">Manage</button></div>`).join('')}</div>
+ <div class="card"><div class="row"><h3>Farms</h3><button class="pill" onclick="newFarm()">+ Add</button></div>${F.length?F.map(f=>`<div class="item"><div class="t"><b>${E(f.Farm_Name)}</b><span class="mut sm">${E(f.Location)}</span></div></div>`).join(''):'<p class="mut">No farms yet.</p>'}</div>`};
+
+/* ---- forms ---- */
+function form(title,fs,cb,btn){fcb=cb;sh(`<div class="row"><h3>${E(title)}</h3><button class="more" onclick="closeSh()" aria-label="Close">✕</button></div>`+fs.map(f=>`<label class="mut sm" for="f_${f[0]}">${E(f[1])}</label>`+(f[2]=='select'?`<select id="f_${f[0]}">${f[3].map(o=>`<option value="${E(o[0])}">${E(o[1])}</option>`).join('')}</select>`:`<input id="f_${f[0]}" type="${f[2]||'text'}" ${f[3]||''}>`)).join('')+`<button class="btn" id="sv" onclick="submit()">${btn||'Save'}</button>`)}
+async function submit(){const v={};document.querySelectorAll('[id^=f_]').forEach(e=>v[e.id.slice(2)]=e.value.trim());const b=$('#sv'),t=b.textContent;b.disabled=true;b.textContent='Saving…';
+ try{await fcb(v);closeSh();toast('Saved successfully');render()}catch(e){toast(e.message);b.disabled=false;b.textContent=t}}
+async function newHorse(){const [O,F]=await Promise.all([call('listOwners'),call('listFarms')]);
+ form('New horse',[['n','Horse name'],['br','Breed'],['sx','Sex','select',opts(['Mare','Stallion','Gelding','Unknown'])],['dob','Date of birth','date'],['col','Color'],['w','Approximate weight (kg)','number','inputmode="decimal"'],
+  ['ow','Owner','select',[['','New owner (fill in below)'],...O.map(o=>[o.Owner_ID,o.Owner_Name])]],['on','New owner name'],['op','New owner phone','tel'],['fm','Farm','select',[['','—'],...F.map(f=>[f.Farm_ID,f.Farm_Name])]]],
+  async v=>{if(!v.n)throw Error('Horse name is required');
+   const p={Horse_Name:v.n,Breed:v.br,Sex:v.sx,Date_of_Birth:v.dob,Color:v.col,Approximate_Weight_KG:v.w,Owner_ID:v.ow,Owner_Name:v.on,Owner_Phone:v.op,Farm_ID:v.fm};
+   const r=await call('createHorse',p);if(r.duplicate){if(!confirm('This owner already has a horse with this name. Save anyway?'))throw Error('Cancelled');await call('createHorse',{...p,confirm_duplicate:1})}})}
+async function newCase(){const [H,L]=await Promise.all([call('horseOptions'),call('listLookups')]);if(!H.length)return toast('Add a horse first');
+ const cats=L.filter(l=>l.t=='CASE_CATEGORY').map(l=>l.v);
+ form('New case',[['h','Horse','select',H.map(h=>[h.Horse_ID,h.Horse_Name+' · '+h.Horse_ID])],['c','Chief complaint'],['k','Category','select',opts(cats)],['p','Priority','select',opts(['Routine','Urgent','Critical'])]],
+  async v=>{if(!v.c)throw Error('Chief complaint is required');await call('createCase',{Horse_ID:v.h,Primary_Complaint:v.c,Case_Category:v.k,Priority:v.p})})}
+const newFarm=()=>form('Add farm',[['n','Farm name'],['l','Location']],async v=>{if(!v.n)throw Error('Farm name is required');await call('saveFarm',{Farm_Name:v.n,Location:v.l})});
+const newUser=()=>form('Add user',[['n','Full name'],['u','Username (no spaces)','text','autocapitalize="none"'],['p','Password (min. 6)','text'],['r','Role','select',opts(['DOCTOR','ADMIN','RESEARCH'])]],async v=>{await call('addUser',{name:v.n,username:v.u,password:v.p,role:v.r})},'Create user');
+function userMenu(i){const u=UL[i];sh(`<div class="row"><h3>${E(u.Full_Name)}</h3><button class="more" onclick="closeSh()" aria-label="Close">✕</button></div><p class="mut sm">@${E(u.Google_Email)}</p>
+ <button class="btn" onclick="resetPw(${i})">Reset password</button><button class="btn o" onclick="toggle(${i})">${u.Active?'Deactivate':'Reactivate'} account</button>`)}
+const resetPw=i=>form('New password for '+UL[i].Full_Name,[['p','New password (min. 6)','text']],async v=>{await call('resetPassword',{User_ID:UL[i].User_ID,password:v.p})},'Set password');
+async function toggle(i){try{await call('setActive',{User_ID:UL[i].User_ID,active:!UL[i].Active});closeSh();toast('Updated');render()}catch(e){toast(e.message)}}
+const chPw=()=>form('Change my password',[['o','Current password','password'],['n','New password (min. 6)','password']],async v=>{await call('changePassword',{old:v.o,new:v.n})},'Change password');
+function horseSheet(i){const h=HV[i];sh(`<div class="row"><h3 style="font-size:24px">${E(h.Horse_Name)}</h3><button class="more" onclick="closeSh()" aria-label="Close">✕</button></div><p class="mut sm">${E(h.Horse_ID)}</p>
+ <p>${E(h.Breed)} · ${E(h.Sex)} · ${E(h.Color)}<br>${h.Approximate_Weight_KG?E(h.Approximate_Weight_KG)+' kg<br>':''}Born: ${E(h.Date_of_Birth)||'—'}</p><p><b>Owner:</b> ${E(h.Owner_Name)}<br>${h.Owner_Phone?`<a href="tel:${E(h.Owner_Phone)}">${E(h.Owner_Phone)}</a>`:''}</p>`)}
+function caseSheet(i){const c=CV[i];sh(`<div class="row"><h3 style="font-size:22px">${E(c.Horse_Name)}</h3><button class="more" onclick="closeSh()" aria-label="Close">✕</button></div><p class="mut sm">${E(c.Case_ID)} · opened ${E(c.Open_Date)}</p>
+ <p>${chip(c.Status)} ${chip(c.Priority)} <span class="ch c-gry">${E(c.Case_Category)}</span></p><p>${E(c.Primary_Complaint)}</p><p class="mut sm">Doctor: ${E(c.Responsible_Doctor)}</p>
+ <p class="mut sm">Change status</p><div class="row" style="flex-wrap:wrap;justify-content:flex-start">${['Open','Hospitalized','Follow-up','Closed'].map(s=>`<button class="pill ${c.Status==s?'on':''}" onclick="setStatus(${i},'${s}')">${s}</button>`).join('')}</div>`)}
+function setStatus(i,s){const c=CV[i];
+ if(s=='Closed')return form('Close case — outcome',[['o','Outcome','select',opts(['Recovered','Improved','Unchanged','Deteriorated','Lost to follow-up'])]],async v=>{await call('setCaseStatus',{Case_ID:c.Case_ID,Status:s,Outcome:v.o,Row_Version:c.Row_Version})},'Close case');
+ call('setCaseStatus',{Case_ID:c.Case_ID,Status:s,Row_Version:c.Row_Version}).then(()=>{closeSh();toast('Status updated');loadList()}).catch(e=>toast(e.message))}
+</script></body></html>
