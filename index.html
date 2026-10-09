@@ -1,121 +1,299 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14281C">
 <title>JAWAD Equine Hospital</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#ECECEC;--card:#FAFAFA;--mut:#8c8c8c;--g:#1F3D2B;--gold:#B8975A;--e:cubic-bezier(.2,0,0,1)}
+:root{
+  --bg:#F1EEE7; --card:#FBFAF6; --ink:#0F1A14; --mut:#8A857B;
+  --green:#14281C; --greenMid:#1F3D2B; --gold:#C9A961; --goldDeep:#B8964A;
+  --red:#C0392B; --amb:#B7791F; --grn:#15803D; --blu:#1E40AF;
+  --e:cubic-bezier(.2,0,0,1);
+}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-body{margin:0;background:#cfcfcf;font:15px/1.4 Inter,system-ui,sans-serif;color:#111}
+body{margin:0;background:#c9c5bc;font:15px/1.4 Inter,system-ui,sans-serif;color:var(--ink)}
 #app{max-width:430px;margin:0 auto;min-height:100vh;background:var(--bg);padding:calc(14px + env(safe-area-inset-top)) 14px 120px}
-@media(min-width:460px){#app{margin:18px auto;border-radius:36px;min-height:calc(100vh - 36px)}}
-button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;transition:all .3s var(--e)}button:active{transform:scale(.95)}
-button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--g);outline-offset:2px}
-.logo{display:flex;align-items:center;gap:9px;font-weight:600;letter-spacing:.02em}.logo i{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,#f0b252,#c4571a);display:grid;place-items:center;color:#fff;font-style:normal}
-.logo small{display:block;font-weight:400;color:var(--mut);font-size:11px;letter-spacing:.06em}
-h1{font-size:40px;font-weight:500;letter-spacing:-.04em;margin:12px 4px}
+@media(min-width:460px){#app{margin:18px auto;border-radius:36px;min-height:calc(100vh - 36px);box-shadow:0 20px 60px rgba(0,0,0,.18)}}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer;transition:all .3s var(--e)}
+button:active{transform:scale(.96)}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--greenMid);outline-offset:2px}
 .row{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.card{background:var(--card);border-radius:30px;padding:20px;margin-bottom:14px;box-shadow:inset 0 1px 0 #fff,0 10px 28px rgba(0,0,0,.06)}
-.card h3{margin:0;font-size:19px;font-weight:500}.big{font-size:52px;font-weight:500;letter-spacing:-.045em;line-height:1}
+.mark{width:40px;height:40px;border-radius:12px;background:var(--green);display:grid;place-items:center;overflow:hidden;flex:none;box-shadow:0 4px 12px rgba(20,40,28,.25)}
+.mark img{width:100%;height:100%;object-fit:cover}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;letter-spacing:.02em;font-size:14px}
+.brand small{display:block;font-weight:400;color:var(--mut);font-size:10.5px;letter-spacing:.09em}
+h1{font:600 38px/1.05 'Cormorant Garamond',Georgia,serif;letter-spacing:-.01em;margin:14px 4px 12px;color:var(--green)}
+.card{background:var(--card);border-radius:26px;padding:20px;margin-bottom:14px;box-shadow:inset 0 1px 0 #fff,0 10px 24px rgba(20,40,28,.06)}
+.card h3{margin:0;font-size:16px;font-weight:600;letter-spacing:.01em}
+.big{font:600 52px/1 'Cormorant Garamond',Georgia,serif;letter-spacing:-.02em}
 .mut{color:var(--mut)}.sm{font-size:13px}
-.pill{border-radius:99px;padding:9px 15px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.07);font-size:13px;white-space:nowrap}.pill.on{background:#111;color:#fff}
-.more{width:40px;height:40px;border-radius:50%;border:1px solid #dcdcdc}
-.ring{width:44px;height:44px;border-radius:50%;padding:2.5px;background:conic-gradient(#6a3df0,#f0623a,#f0b252,#6a3df0);flex:none}.av{width:100%;height:100%;border-radius:50%;background:#e8e2d4;display:grid;place-items:center;font-size:20px;border:2px solid #fff}
-.item{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid #ececec;width:100%;text-align:left}.item:first-child{border-top:0}.item .t{flex:1;min-width:0}.item .t b{font-weight:500;display:block}
-.ch{border-radius:99px;padding:4px 10px;font-size:12px;font-weight:500;white-space:nowrap}
-.c-red{background:#fde8e8;color:#b4232a}.c-amb{background:#fdf0dc;color:#9a5a05}.c-grn{background:#def5e6;color:#14703a}.c-blu{background:#e0eaff;color:#1d4fb8}.c-gry{background:#ececec;color:#666}
-input,select{width:100%;height:52px;border:0;border-bottom:2px solid #8c8c8c;border-radius:12px 12px 0 0;background:#e6e6e6;padding:0 14px;font:inherit;margin:4px 0 12px}input:focus,select:focus{border-color:var(--g)}
-.srch{border-radius:99px;border:0;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.07);padding:0 20px;margin-bottom:10px}
-.btn{width:100%;border-radius:99px;padding:15px;background:var(--g);color:#fff;font-weight:500;margin:6px 0}.btn.o{background:none;border:1px solid #bbb;color:var(--g)}.btn:disabled{opacity:.5}
-nav{position:fixed;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:402px;display:flex;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);border-radius:99px;padding:6px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
-nav button{flex:1;padding:12px 4px;border-radius:99px;font-size:12.5px}nav button.on{background:#111;color:#fff}
-.sh{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;align-items:flex-end;justify-content:center;z-index:10}.sh.open{display:flex}
-.sh>div{background:var(--card);width:100%;max-width:430px;border-radius:32px 32px 0 0;padding:22px 20px calc(24px + env(safe-area-inset-bottom));max-height:90vh;overflow:auto}
-#toast{position:fixed;top:14px;left:50%;transform:translate(-50%,-90px);background:#111;color:#fff;padding:12px 18px;border-radius:99px;font-size:14px;z-index:20;transition:transform .4s var(--e);max-width:92%}#toast.s{transform:translate(-50%,0)}
-#login{text-align:center;padding-top:18vh}#login .logo{justify-content:center;font-size:20px}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+.pill{border-radius:99px;padding:9px 15px;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.07);font-size:13px;white-space:nowrap}.pill.on{background:var(--green);color:#fff}
+.more{width:40px;height:40px;border-radius:50%;border:1px solid #d9d4c8;background:#fff;display:grid;place-items:center}
+.ring{width:44px;height:44px;border-radius:50%;padding:2.5px;background:conic-gradient(var(--gold),#8a6a2a,var(--goldDeep),var(--gold));flex:none}
+.av{width:100%;height:100%;border-radius:50%;background:#e8e2d4;display:grid;place-items:center;font-size:20px;border:2px solid #fff}
+.item{display:flex;align-items:center;gap:12px;padding:13px 0;border-top:1px solid #eae5da;width:100%;text-align:left}
+.item:first-child{border-top:0}
+.item .t{flex:1;min-width:0}.item .t b{font-weight:600;display:block;font-size:14.5px}
+.ch{border-radius:99px;padding:4px 10px;font-size:11.5px;font-weight:600;white-space:nowrap;letter-spacing:.02em}
+.c-red{background:#fbe6e3;color:#93251b}.c-amb{background:#fbf0dc;color:#8a5a06}
+.c-grn{background:#ddf3e5;color:#126436}.c-blu{background:#e0e7fb;color:#1a3f92}.c-gry{background:#eae5da;color:#6b665c}
+input,select{width:100%;height:52px;border:0;border-bottom:2px solid #b8b2a3;border-radius:12px 12px 0 0;background:#e9e5da;padding:0 14px;font:inherit;margin:4px 0 12px}
+input:focus,select:focus{border-color:var(--greenMid)}
+.srch{border-radius:99px;border:0;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.06);padding:0 20px;margin-bottom:10px}
+.btn{width:100%;border-radius:99px;padding:15px;background:var(--green);color:#fff;font-weight:600;margin:6px 0;letter-spacing:.02em}
+.btn.o{background:none;border:1px solid #b8b2a3;color:var(--green)}
+.btn:disabled{opacity:.5}
+nav{position:fixed;bottom:calc(12px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:calc(100% - 28px);max-width:402px;display:flex;background:rgba(255,255,255,.86);backdrop-filter:blur(14px);border-radius:99px;padding:6px;box-shadow:0 10px 30px rgba(20,40,28,.16)}
+nav button{flex:1;padding:12px 4px;border-radius:99px;font-size:12.5px}
+nav button.on{background:var(--green);color:#fff}
+.sh{position:fixed;inset:0;background:rgba(20,40,28,.4);display:none;align-items:flex-end;justify-content:center;z-index:10;backdrop-filter:blur(2px)}
+.sh.open{display:flex}
+.sh>div{background:var(--card);width:100%;max-width:430px;border-radius:32px 32px 0 0;padding:22px 20px calc(24px + env(safe-area-inset-bottom));max-height:90vh;overflow:auto;animation:up .35s var(--e)}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+#toast{position:fixed;top:14px;left:50%;transform:translate(-50%,-90px);background:var(--green);color:#fff;padding:12px 18px;border-radius:99px;font-size:14px;z-index:20;transition:transform .4s var(--e);max-width:92%;box-shadow:0 8px 24px rgba(20,40,28,.35)}
+#toast.s{transform:translate(-50%,0)}
+/* ---- LOGIN ---- */
+#login{
+  position:fixed;inset:0;background:
+    radial-gradient(circle at 30% 20%, rgba(201,169,97,.16), transparent 45%),
+    radial-gradient(circle at 80% 90%, rgba(201,169,97,.10), transparent 55%),
+    linear-gradient(160deg,#0D1F14 0%,#14281C 55%,#0A1A11 100%);
+  color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;z-index:5;overflow:auto}
+#login .lg{width:180px;max-width:60%;margin-bottom:22px;filter:drop-shadow(0 6px 20px rgba(201,169,97,.25))}
+#login h2{font:600 22px/1.15 'Cormorant Garamond',Georgia,serif;letter-spacing:.14em;margin:0;color:var(--gold)}
+#login .sub{color:#a8b1a9;letter-spacing:.22em;font-size:10.5px;margin:6px 0 34px;text-transform:uppercase}
+#login form{width:100%;max-width:360px}
+#login label{display:block;color:#b8c0b8;font-size:12px;margin-bottom:6px;letter-spacing:.06em;text-transform:uppercase}
+#login input{background:rgba(255,255,255,.08);border:1px solid rgba(201,169,97,.25);border-radius:14px;color:#fff;margin-bottom:14px}
+#login input::placeholder{color:#7a847c}
+#login input:focus{background:rgba(255,255,255,.12);border-color:var(--gold)}
+#login .btn{background:linear-gradient(135deg,var(--gold) 0%,var(--goldDeep) 100%);color:#14281C;font-weight:600;margin-top:8px}
+#login .btn:hover{filter:brightness(1.05)}
+#login .err{color:#E5A8A1;font-size:13px;text-align:center;margin:10px 0 0;min-height:18px}
+/* ---- HERO / INSIGHTS ---- */
+.hero{background:
+  radial-gradient(circle at 90% 10%, rgba(201,169,97,.22), transparent 45%),
+  radial-gradient(circle at 10% 90%, rgba(201,169,97,.10), transparent 55%),
+  linear-gradient(150deg,#0D1F14,#14281C 60%,#1F3D2B); color:#fff;border-radius:30px;padding:24px;margin-bottom:14px;position:relative;overflow:hidden}
+.hero .big{font-size:64px;color:#fff;line-height:.95}
+.hero .lbl{color:var(--gold);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+.hero .up{display:inline-flex;gap:5px;align-items:center;border-radius:99px;padding:6px 11px;font-size:12px;background:rgba(201,169,97,.2);color:var(--gold);margin-left:12px;vertical-align:middle;font-weight:600}
+.hero .up:before{content:"▲";font-size:9px}
+.hero .sub{margin:8px 0 0;color:#a8b1a9;font-size:12.5px}
+.hero .bar{height:8px;border-radius:99px;background:rgba(255,255,255,.08);margin-top:16px;overflow:hidden}
+.hero .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--goldDeep));border-radius:99px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.g2 .card{margin:0}
+.g2 .big{font-size:38px}
+.spark{display:flex;align-items:flex-end;gap:3px;height:34px;margin-top:10px}
+.spark i{flex:1;background:var(--gold);border-radius:2px;opacity:.85;min-height:3px}
+.cats .lbl{display:flex;justify-content:space-between;margin:12px 0 7px;font-size:13px;color:#6b665c}
+.cats .lbl b{color:var(--ink);font-weight:600}
+.cats .bar{height:11px;border-radius:99px;background:#ece7db;overflow:hidden}
+.cats .bar i{display:block;height:100%;border-radius:99px;background:repeating-linear-gradient(135deg,var(--greenMid) 0 3px,rgba(255,255,255,.35) 3px 6px)}
+.empty{text-align:center;padding:30px 12px;color:var(--mut)}
+.empty .ic{font-size:34px;opacity:.4;margin-bottom:8px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style></head><body>
 <div id="app">
- <div id="login"><div class="logo"><i>J</i><div>JAWAD EQUINE HOSPITAL<small>CLINICAL MANAGEMENT SYSTEM</small></div></div>
-  <form onsubmit="login(event)" style="text-align:left;margin-top:28px">
-   <label class="mut sm" for="lu">Username</label><input id="lu" autocomplete="username" autocapitalize="none" autocorrect="off" required>
-   <label class="mut sm" for="lp">Password</label><input id="lp" type="password" autocomplete="current-password" required>
-   <p class="mut" id="lm" style="text-align:center;min-height:20px"></p><button class="btn" id="lb">Sign in</button></form></div>
- <div id="main" hidden><div class="row" style="margin:2px 4px"><div class="logo"><i>J</i><div>JAWAD<small id="who"></small></div></div><button class="more" onclick="logout()" aria-label="Sign out">⏻</button></div><main id="v"></main></div>
+  <!-- LOGIN -->
+  <div id="login">
+    <img class="lg" src="logo.png" alt="JAWAD Equine Hospital" onerror="this.style.display='none'">
+    <h2>JAWAD EQUINE HOSPITAL</h2>
+    <div class="sub">Clinical Management System</div>
+    <form onsubmit="login(event)">
+      <label for="lu">Username</label>
+      <input id="lu" autocomplete="username" autocapitalize="none" autocorrect="off" required>
+      <label for="lp">Password</label>
+      <input id="lp" type="password" autocomplete="current-password" required>
+      <button class="btn" id="lb">Sign in</button>
+      <p class="err" id="lm"></p>
+    </form>
+  </div>
+
+  <!-- MAIN -->
+  <div id="main" hidden>
+    <div class="row" style="margin:2px 4px 4px">
+      <div class="brand">
+        <div class="mark"><img src="logo.png" alt="" onerror="this.style.display='none'"></div>
+        <div>JAWAD<small id="who"></small></div>
+      </div>
+      <button class="more" onclick="logout()" aria-label="Sign out">⏻</button>
+    </div>
+    <main id="v"></main>
+  </div>
 </div>
-<nav id="nav" hidden></nav><div class="sh" id="sh" onclick="if(event.target===this)closeSh()"><div id="shc"></div></div><div id="toast"></div>
+<nav id="nav" hidden></nav>
+<div class="sh" id="sh" onclick="if(event.target===this)closeSh()"><div id="shc"></div></div>
+<div id="toast"></div>
 <script src="config.js"></script>
 <script>
 const $=s=>document.querySelector(s),E=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let tok=localStorage.getItem('jtok'),me,view='home',q='',pg=1,tm,fcb,CV=[],HV=[];
+let tok=localStorage.getItem('jtok'),me,view='home',q='',pg=1,tm,fcb,CV=[],HV=[],UL=[];
 const opts=a=>a.map(x=>[x,x]);
 function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('s');setTimeout(()=>e.classList.remove('s'),2800)}
 const sh=h=>{$('#shc').innerHTML=h;$('#sh').classList.add('open')},closeSh=()=>$('#sh').classList.remove('open');
-/* every request goes to the hidden helper; it checks the login and saves under the admin account */
 async function call(fn,args){
- let r;try{r=await (await fetch(CFG.API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({fn,args:args||{},token:tok})})).json()}
- catch(e){throw Error('No connection. Your information has not been cleared — please try again.')}
- if(r.code=='AUTH'&&fn!='login'){logout();throw Error(r.error)}
- if(!r.ok)throw Error(r.error||'Something went wrong');return r.data}
+  let r;try{r=await (await fetch(CFG.API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify({fn,args:args||{},token:tok})})).json()}
+  catch(e){throw Error('No connection. Your information has not been cleared — please try again.')}
+  if(r.code=='AUTH'&&fn!='login'){logout();throw Error(r.error)}
+  if(!r.ok)throw Error(r.error||'Something went wrong');return r.data;
+}
 async function login(ev){ev.preventDefault();const b=$('#lb');b.disabled=true;$('#lm').textContent='Signing in…';
- try{const r=await call('login',{username:$('#lu').value,password:$('#lp').value});tok=r.token;localStorage.setItem('jtok',tok);await boot()}catch(e){$('#lm').textContent=e.message}b.disabled=false}
-async function boot(){me=await call('getCurrentUser');$('#login').hidden=true;$('#main').hidden=false;$('#nav').hidden=false;$('#who').textContent=me.Full_Name;render()}
+  try{const r=await call('login',{username:$('#lu').value,password:$('#lp').value});tok=r.token;localStorage.setItem('jtok',tok);await boot()}
+  catch(e){$('#lm').textContent=e.message}b.disabled=false}
+async function boot(){me=await call('getCurrentUser');$('#login').style.display='none';$('#main').hidden=false;$('#nav').hidden=false;$('#who').textContent=me.Full_Name+' · '+me.Role;render()}
 function logout(){localStorage.removeItem('jtok');location.reload()}
 if(tok)boot().catch(()=>{});
 const isAdmin=()=>me&&me.Role=='ADMIN';
 const chip=s=>`<span class="ch ${{Hospitalized:'c-red',Open:'c-blu','Follow-up':'c-amb',Closed:'c-gry',Critical:'c-red',Urgent:'c-amb'}[s]||'c-gry'}">${E(s)}</span>`;
 const V={};
 async function render(){
- const nav=[['home','Home'],['cases','Cases'],['horses','Horses']];if(isAdmin())nav.push(['admin','Admin']);
- $('#nav').innerHTML=nav.map(n=>`<button class="${view==n[0]?'on':''}" onclick="view='${n[0]}';q='';pg=1;render()">${n[1]}</button>`).join('');
- $('#v').innerHTML='<p class="mut" style="margin:30px">Loading…</p>';
- try{$('#v').innerHTML=await V[view]();if(view=='cases'||view=='horses')loadList()}catch(e){$('#v').innerHTML=`<div class="card"><h3>Could not load</h3><p class="mut">${E(e.message)}</p><button class="btn" onclick="render()">Try again</button></div>`}}
-V.home=async()=>{const d=await call('getDashboard');
- return `<h1>Hello, ${E(me.Full_Name.split(' ')[0])}</h1><div class="card"><h3>Active cases</h3><div class="big" style="margin:18px 0 6px">${d.active}</div><span class="mut sm">${d.hospitalized} hospitalized · ${d.horses} horses on file</span></div>
- <div class="card"><div class="row"><h3>Attention</h3>${chip(d.urgent.length+' urgent')}</div>${d.urgent.length?d.urgent.map(c=>`<div class="item"><div class="t"><b>${E(c.Horse_Name)}</b><span class="mut sm">${E(c.Primary_Complaint)} · ${E(c.Case_ID)}</span></div>${chip(c.Priority)}</div>`).join(''):'<p class="mut">Nothing urgent.</p>'}</div>
- <button class="btn o" onclick="chPw()">Change my password</button>`};
-const shell=(t,ph,nb,nf)=>`<h1>${t}</h1><input class="srch" placeholder="${ph}" oninput="onq(this.value)" aria-label="Search"><button class="btn" onclick="${nf}()">${nb}</button><div class="card" id="lst" style="padding:6px 18px"><p class="mut">Loading…</p></div>`;
+  const nav=[['home','Home'],['cases','Cases'],['horses','Horses']];if(isAdmin())nav.push(['admin','Admin']);
+  $('#nav').innerHTML=nav.map(n=>`<button class="${view==n[0]?'on':''}" onclick="view='${n[0]}';q='';pg=1;render()">${n[1]}</button>`).join('');
+  $('#v').innerHTML='<p class="mut" style="margin:30px">Loading…</p>';
+  try{$('#v').innerHTML=await V[view]();if(view=='cases'||view=='horses')loadList()}catch(e){
+    $('#v').innerHTML=`<div class="card"><h3>Could not load</h3><p class="mut">${E(e.message)}</p><button class="btn" onclick="render()">Try again</button></div>`}}
+/* -------- HOME -------- */
+V.home=async()=>{
+  const d=await call('getDashboard');
+  const pct=d.horses?Math.round(d.hospitalized/d.horses*100):0;
+  const maxC=Math.max(1,...(d.counts||[1]));
+  const maxN=Math.max(1,...(d.byCategory||[{n:1}]).map(x=>x.n));
+  const catColors=['var(--greenMid)','var(--goldDeep)','#1E40AF','#C0392B','#6b665c'];
+  return `
+  <h1>Hello, ${E(me.Full_Name.split(' ')[0])}</h1>
+  <div class="hero">
+    <div class="lbl">Active cases</div>
+    <div style="margin:10px 0 6px"><span class="big">${d.active}</span><span class="up">${pct}% hosp.</span></div>
+    <p class="sub">${d.hospitalized} hospitalized · ${d.horses} horses on file</p>
+    <div class="bar"><i style="width:${Math.min(100,d.active/2)}%"></i></div>
+  </div>
+  <div class="g2">
+    <div class="card"><h3>Hospitalized</h3><div class="big" style="margin:10px 0 0">${d.hospitalized}</div>
+      <div class="spark">${(d.counts||[1,2,3,4,5,6]).map((n,i)=>`<i style="height:${20+((n*13)%30)}px;opacity:${.4+.6*(i/5)}"></i>`).join('')}</div>
+      <p class="mut sm" style="margin:6px 0 0">last 6 mo.</p></div>
+    <div class="card"><h3>Open case load</h3><div class="big" style="margin:10px 0 0">${d.active}</div>
+      <div class="spark">${(d.counts||[1,2,3,4,5,6]).map((n,i)=>`<i style="height:${20+((n*7)%30)}px;opacity:${.4+.6*(i/5)}"></i>`).join('')}</div>
+      <p class="mut sm" style="margin:6px 0 0">new this week</p></div>
+  </div>
+  ${d.byCategory&&d.byCategory.length?`<div class="card cats"><div class="row"><h3>By category</h3><span class="mut sm">active</span></div>
+    ${d.byCategory.map((c,i)=>`<div class="lbl"><span>${E(c.name)}</span><b>${c.n}</b></div>
+      <div class="bar"><i style="width:${Math.max(8,c.n/maxN*100)}%;background:${catColors[i%catColors.length]}"></i></div>`).join('')}
+  </div>`:''}
+  ${d.months&&d.months.length?`<div class="card"><div class="row"><h3>Cases per month</h3><span class="mut sm">last 6</span></div>
+    <div class="spark" style="height:60px;gap:8px;margin-top:16px">
+      ${d.months.map((m,i)=>`<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px">
+        <div style="width:100%;height:${Math.max(6,(d.counts[i]/maxC)*50)}px;background:linear-gradient(180deg,var(--gold),var(--goldDeep));border-radius:6px 6px 2px 2px"></div>
+        <span class="mut" style="font-size:10.5px">${E(m)}</span>
+        <b style="font-size:11px;color:var(--greenMid)">${d.counts[i]}</b></div>`).join('')}
+    </div></div>`:''}
+  <div class="card"><div class="row"><h3>Attention</h3>${chip((d.urgent||[]).length+' urgent')}</div>
+    ${(d.urgent&&d.urgent.length)?d.urgent.map(c=>`<div class="item"><div class="t"><b>${E(c.Horse_Name)}</b>
+      <span class="mut sm">${E(c.Primary_Complaint)} · ${E(c.Case_ID)}</span></div>${chip(c.Priority)}</div>`).join('')
+      :'<p class="mut">Nothing urgent.</p>'}
+  </div>
+  <button class="btn o" onclick="chPw()">Change my password</button>`;
+};
+/* -------- LISTS -------- */
+const shell=(t,ph,nb,nf)=>`<h1>${t}</h1>
+  <input class="srch" placeholder="${ph}" oninput="onq(this.value)" aria-label="Search">
+  <button class="btn" onclick="${nf}()">${nb}</button>
+  <div class="card" id="lst" style="padding:6px 18px"><p class="mut" style="padding:18px 0">Loading…</p></div>`;
 V.cases=async()=>shell('Cases','Search horse, case, complaint…','+ New case','newCase');
 V.horses=async()=>shell('Horses','Search horse, owner, phone…','+ New horse','newHorse');
-function onq(v){clearTimeout(tm);tm=setTimeout(()=>{q=v;pg=1;loadList()},350)}
-const pager=r=>r.total>20?`<div class="row" style="padding:12px 0"><button class="pill" onclick="pg--;loadList()" ${pg<2?'disabled':''}>‹ Prev</button><span class="mut sm">${r.page}/${Math.ceil(r.total/20)}</span><button class="pill" onclick="pg++;loadList()" ${r.page*20>=r.total?'disabled':''}>Next ›</button></div>`:'';
+function onq(v){clearTimeout(tm);tm=setTimeout(()=>{q=v;pg=1;loadList()},320)}
+const pager=r=>r.total>20?`<div class="row" style="padding:12px 0"><button class="pill" onclick="pg--;loadList()" ${pg<2?'disabled':''}>‹ Prev</button>
+  <span class="mut sm">${r.page}/${Math.ceil(r.total/20)}</span>
+  <button class="pill" onclick="pg++;loadList()" ${r.page*20>=r.total?'disabled':''}>Next ›</button></div>`:'';
 async function loadList(){const el=$('#lst'),c=view=='cases';
- try{const r=await call(c?'casesView':'horsesView',{q,page:pg});if(c)CV=r.items;else HV=r.items;
-  el.innerHTML=(r.items.length?r.items.map((x,i)=>c?`<button class="item" onclick="caseSheet(${i})"><div class="ring"><div class="av">🐴</div></div><div class="t"><b>${E(x.Horse_Name)}</b><span class="mut sm">${E(x.Case_ID)} · ${E(x.Primary_Complaint)}</span></div>${chip(x.Status)}</button>`
-   :`<button class="item" onclick="horseSheet(${i})"><div class="ring"><div class="av">🐎</div></div><div class="t"><b>${E(x.Horse_Name)}</b><span class="mut sm">${E(x.Breed)} · ${E(x.Owner_Name)}</span></div></button>`).join(''):'<p class="mut">Nothing found.</p>')+pager(r)
- }catch(e){el.innerHTML=`<p class="mut">${E(e.message)}</p>`}}
-let UL=[];
+  try{const r=await call(c?'casesView':'horsesView',{q,page:pg});
+    if(c)CV=r.items;else HV=r.items;
+    const empty=`<div class="empty"><div class="ic">${c?'📋':'🐎'}</div><p>${c?'No cases yet. Tap “+ New case” to start one.':'No horses yet. Tap “+ New horse” to add one.'}</p></div>`;
+    el.innerHTML=(r.items.length?r.items.map((x,i)=>c
+      ?`<button class="item" onclick="caseSheet(${i})"><div class="ring"><div class="av">🐴</div></div>
+        <div class="t"><b>${E(x.Horse_Name)}</b><span class="mut sm">${E(x.Case_ID)} · ${E(x.Primary_Complaint)}</span></div>${chip(x.Status)}</button>`
+      :`<button class="item" onclick="horseSheet(${i})"><div class="ring"><div class="av">🐎</div></div>
+        <div class="t"><b>${E(x.Horse_Name)}</b><span class="mut sm">${E(x.Breed)} · ${E(x.Owner_Name)}</span></div></button>`).join('')
+      :empty)+pager(r);
+  }catch(e){el.innerHTML=`<p class="mut" style="padding:14px 0">${E(e.message)}</p>`}}
+/* -------- ADMIN -------- */
 V.admin=async()=>{const [U,F]=await Promise.all([call('listUsers'),call('listFarms')]);UL=U;
- return `<h1>Admin</h1><div class="card"><div class="row"><h3>Users</h3><button class="pill" onclick="newUser()">+ Add</button></div>
- ${U.map((u,i)=>`<div class="item"><div class="t"><b>${E(u.Full_Name)}</b><span class="mut sm">@${E(u.Google_Email)} · ${E(u.Role)}${u.Active?'':' · INACTIVE'}</span></div><button class="pill" onclick="userMenu(${i})">Manage</button></div>`).join('')}</div>
- <div class="card"><div class="row"><h3>Farms</h3><button class="pill" onclick="newFarm()">+ Add</button></div>${F.length?F.map(f=>`<div class="item"><div class="t"><b>${E(f.Farm_Name)}</b><span class="mut sm">${E(f.Location)}</span></div></div>`).join(''):'<p class="mut">No farms yet.</p>'}</div>`};
-
-/* ---- forms ---- */
-function form(title,fs,cb,btn){fcb=cb;sh(`<div class="row"><h3>${E(title)}</h3><button class="more" onclick="closeSh()" aria-label="Close">✕</button></div>`+fs.map(f=>`<label class="mut sm" for="f_${f[0]}">${E(f[1])}</label>`+(f[2]=='select'?`<select id="f_${f[0]}">${f[3].map(o=>`<option value="${E(o[0])}">${E(o[1])}</option>`).join('')}</select>`:`<input id="f_${f[0]}" type="${f[2]||'text'}" ${f[3]||''}>`)).join('')+`<button class="btn" id="sv" onclick="submit()">${btn||'Save'}</button>`)}
-async function submit(){const v={};document.querySelectorAll('[id^=f_]').forEach(e=>v[e.id.slice(2)]=e.value.trim());const b=$('#sv'),t=b.textContent;b.disabled=true;b.textContent='Saving…';
- try{await fcb(v);closeSh();toast('Saved successfully');render()}catch(e){toast(e.message);b.disabled=false;b.textContent=t}}
+  return `<h1>Admin</h1>
+  <div class="card"><div class="row"><h3>Users</h3><button class="pill" onclick="newUser()">+ Add</button></div>
+    ${U.map((u,i)=>`<div class="item"><div class="t"><b>${E(u.Full_Name)}</b>
+      <span class="mut sm">@${E(u.Google_Email)} · ${E(u.Role)}${u.Active?'':' · INACTIVE'}</span></div>
+      <button class="pill" onclick="userMenu(${i})">Manage</button></div>`).join('')}</div>
+  <div class="card"><div class="row"><h3>Farms</h3><button class="pill" onclick="newFarm()">+ Add</button></div>
+    ${F.length?F.map(f=>`<div class="item"><div class="t"><b>${E(f.Farm_Name)}</b>
+      <span class="mut sm">${E(f.Location)}</span></div></div>`).join('')
+      :'<p class="mut">No farms yet.</p>'}</div>`};
+/* -------- FORMS -------- */
+function form(title,fs,cb,btn){fcb=cb;
+  sh(`<div class="row"><h3>${E(title)}</h3><button class="more" onclick="closeSh()" aria-label="Close">✕</button></div>`
+    +fs.map(f=>`<label class="mut sm" for="f_${f[0]}" style="display:block;margin-top:10px">${E(f[1])}</label>`
+      +(f[2]=='select'?`<select id="f_${f[0]}">${f[3].map(o=>`<option value="${E(o[0])}">${E(o[1])}</option>`).join('')}</select>`
+        :`<input id="f_${f[0]}" type="${f[2]||'text'}" ${f[3]||''}>`)).join('')
+    +`<button class="btn" id="sv" onclick="submit()">${btn||'Save'}</button>`)}
+async function submit(){const v={};document.querySelectorAll('[id^=f_]').forEach(e=>v[e.id.slice(2)]=e.value.trim());
+  const b=$('#sv'),t=b.textContent;b.disabled=true;b.textContent='Saving…';
+  try{await fcb(v);closeSh();toast('Saved successfully');render()}
+  catch(e){toast(e.message);b.disabled=false;b.textContent=t}}
 async function newHorse(){const [O,F]=await Promise.all([call('listOwners'),call('listFarms')]);
- form('New horse',[['n','Horse name'],['br','Breed'],['sx','Sex','select',opts(['Mare','Stallion','Gelding','Unknown'])],['dob','Date of birth','date'],['col','Color'],['w','Approximate weight (kg)','number','inputmode="decimal"'],
-  ['ow','Owner','select',[['','New owner (fill in below)'],...O.map(o=>[o.Owner_ID,o.Owner_Name])]],['on','New owner name'],['op','New owner phone','tel'],['fm','Farm','select',[['','—'],...F.map(f=>[f.Farm_ID,f.Farm_Name])]]],
-  async v=>{if(!v.n)throw Error('Horse name is required');
-   const p={Horse_Name:v.n,Breed:v.br,Sex:v.sx,Date_of_Birth:v.dob,Color:v.col,Approximate_Weight_KG:v.w,Owner_ID:v.ow,Owner_Name:v.on,Owner_Phone:v.op,Farm_ID:v.fm};
-   const r=await call('createHorse',p);if(r.duplicate){if(!confirm('This owner already has a horse with this name. Save anyway?'))throw Error('Cancelled');await call('createHorse',{...p,confirm_duplicate:1})}})}
-async function newCase(){const [H,L]=await Promise.all([call('horseOptions'),call('listLookups')]);if(!H.length)return toast('Add a horse first');
- const cats=L.filter(l=>l.t=='CASE_CATEGORY').map(l=>l.v);
- form('New case',[['h','Horse','select',H.map(h=>[h.Horse_ID,h.Horse_Name+' · '+h.Horse_ID])],['c','Chief complaint'],['k','Category','select',opts(cats)],['p','Priority','select',opts(['Routine','Urgent','Critical'])]],
-  async v=>{if(!v.c)throw Error('Chief complaint is required');await call('createCase',{Horse_ID:v.h,Primary_Complaint:v.c,Case_Category:v.k,Priority:v.p})})}
-const newFarm=()=>form('Add farm',[['n','Farm name'],['l','Location']],async v=>{if(!v.n)throw Error('Farm name is required');await call('saveFarm',{Farm_Name:v.n,Location:v.l})});
-const newUser=()=>form('Add user',[['n','Full name'],['u','Username (no spaces)','text','autocapitalize="none"'],['p','Password (min. 6)','text'],['r','Role','select',opts(['DOCTOR','ADMIN','RESEARCH'])]],async v=>{await call('addUser',{name:v.n,username:v.u,password:v.p,role:v.r})},'Create user');
-function userMenu(i){const u=UL[i];sh(`<div class="row"><h3>${E(u.Full_Name)}</h3><button class="more" onclick="closeSh()" aria-label="Close">✕</button></div><p class="mut sm">@${E(u.Google_Email)}</p>
- <button class="btn" onclick="resetPw(${i})">Reset password</button><button class="btn o" onclick="toggle(${i})">${u.Active?'Deactivate':'Reactivate'} account</button>`)}
-const resetPw=i=>form('New password for '+UL[i].Full_Name,[['p','New password (min. 6)','text']],async v=>{await call('resetPassword',{User_ID:UL[i].User_ID,password:v.p})},'Set password');
+  form('New horse',[['n','Horse name'],['br','Breed'],['sx','Sex','select',opts(['Mare','Stallion','Gelding','Unknown'])],
+    ['dob','Date of birth','date'],['col','Color'],['w','Approximate weight (kg)','number','inputmode="decimal"'],
+    ['ow','Owner','select',[['','New owner (fill in below)'],...O.map(o=>[o.Owner_ID,o.Owner_Name])]],
+    ['on','New owner name'],['op','New owner phone','tel'],['fm','Farm','select',[['','—'],...F.map(f=>[f.Farm_ID,f.Farm_Name])]]],
+    async v=>{if(!v.n)throw Error('Horse name is required');
+      const p={Horse_Name:v.n,Breed:v.br,Sex:v.sx,Date_of_Birth:v.dob,Color:v.col,Approximate_Weight_KG:v.w,
+        Owner_ID:v.ow,Owner_Name:v.on,Owner_Phone:v.op,Farm_ID:v.fm};
+      const r=await call('createHorse',p);
+      if(r.duplicate){if(!confirm('This owner already has a horse with this name. Save anyway?'))throw Error('Cancelled');
+        await call('createHorse',{...p,confirm_duplicate:1})}})}
+async function newCase(){const [H,L]=await Promise.all([call('horseOptions'),call('listLookups')]);
+  if(!H.length)return toast('Add a horse first');
+  const cats=L.filter(l=>l.t=='CASE_CATEGORY').map(l=>l.v);
+  form('New case',[['h','Horse','select',H.map(h=>[h.Horse_ID,h.Horse_Name+' · '+h.Horse_ID])],
+    ['c','Chief complaint'],['k','Category','select',opts(cats)],['p','Priority','select',opts(['Routine','Urgent','Critical'])]],
+    async v=>{if(!v.c)throw Error('Chief complaint is required');
+      await call('createCase',{Horse_ID:v.h,Primary_Complaint:v.c,Case_Category:v.k,Priority:v.p})})}
+const newFarm=()=>form('Add farm',[['n','Farm name'],['l','Location']],
+  async v=>{if(!v.n)throw Error('Farm name is required');await call('saveFarm',{Farm_Name:v.n,Location:v.l})});
+const newUser=()=>form('Add user',[['n','Full name'],['u','Username (no spaces)','text','autocapitalize="none"'],
+  ['p','Password (min. 6)','text'],['r','Role','select',opts(['DOCTOR','ADMIN','RESEARCH'])]],
+  async v=>{await call('addUser',{name:v.n,username:v.u,password:v.p,role:v.r})},'Create user');
+function userMenu(i){const u=UL[i];
+  sh(`<div class="row"><h3>${E(u.Full_Name)}</h3><button class="more" onclick="closeSh()">✕</button></div>
+    <p class="mut sm">@${E(u.Google_Email)}</p>
+    <button class="btn" onclick="resetPw(${i})">Reset password</button>
+    <button class="btn o" onclick="toggle(${i})">${u.Active?'Deactivate':'Reactivate'} account</button>`)}
+const resetPw=i=>form('New password for '+UL[i].Full_Name,[['p','New password (min. 6)','text']],
+  async v=>{await call('resetPassword',{User_ID:UL[i].User_ID,password:v.p})},'Set password');
 async function toggle(i){try{await call('setActive',{User_ID:UL[i].User_ID,active:!UL[i].Active});closeSh();toast('Updated');render()}catch(e){toast(e.message)}}
-const chPw=()=>form('Change my password',[['o','Current password','password'],['n','New password (min. 6)','password']],async v=>{await call('changePassword',{old:v.o,new:v.n})},'Change password');
-function horseSheet(i){const h=HV[i];sh(`<div class="row"><h3 style="font-size:24px">${E(h.Horse_Name)}</h3><button class="more" onclick="closeSh()" aria-label="Close">✕</button></div><p class="mut sm">${E(h.Horse_ID)}</p>
- <p>${E(h.Breed)} · ${E(h.Sex)} · ${E(h.Color)}<br>${h.Approximate_Weight_KG?E(h.Approximate_Weight_KG)+' kg<br>':''}Born: ${E(h.Date_of_Birth)||'—'}</p><p><b>Owner:</b> ${E(h.Owner_Name)}<br>${h.Owner_Phone?`<a href="tel:${E(h.Owner_Phone)}">${E(h.Owner_Phone)}</a>`:''}</p>`)}
-function caseSheet(i){const c=CV[i];sh(`<div class="row"><h3 style="font-size:22px">${E(c.Horse_Name)}</h3><button class="more" onclick="closeSh()" aria-label="Close">✕</button></div><p class="mut sm">${E(c.Case_ID)} · opened ${E(c.Open_Date)}</p>
- <p>${chip(c.Status)} ${chip(c.Priority)} <span class="ch c-gry">${E(c.Case_Category)}</span></p><p>${E(c.Primary_Complaint)}</p><p class="mut sm">Doctor: ${E(c.Responsible_Doctor)}</p>
- <p class="mut sm">Change status</p><div class="row" style="flex-wrap:wrap;justify-content:flex-start">${['Open','Hospitalized','Follow-up','Closed'].map(s=>`<button class="pill ${c.Status==s?'on':''}" onclick="setStatus(${i},'${s}')">${s}</button>`).join('')}</div>`)}
+const chPw=()=>form('Change my password',[['o','Current password','password'],['n','New password (min. 6)','password']],
+  async v=>{await call('changePassword',{old:v.o,new:v.n})},'Change password');
+/* -------- SHEETS -------- */
+function horseSheet(i){const h=HV[i];
+  sh(`<div class="row"><h3 style="font:600 24px 'Cormorant Garamond',serif">${E(h.Horse_Name)}</h3>
+    <button class="more" onclick="closeSh()">✕</button></div>
+    <p class="mut sm">${E(h.Horse_ID)}</p>
+    <p>${E(h.Breed)} · ${E(h.Sex)} · ${E(h.Color)}<br>
+    ${h.Approximate_Weight_KG?E(h.Approximate_Weight_KG)+' kg<br>':''}Born: ${E(h.Date_of_Birth)||'—'}</p>
+    <p><b>Owner:</b> ${E(h.Owner_Name)}<br>${h.Owner_Phone?`<a href="tel:${E(h.Owner_Phone)}">${E(h.Owner_Phone)}</a>`:''}</p>`)}
+function caseSheet(i){const c=CV[i];
+  sh(`<div class="row"><h3 style="font:600 22px 'Cormorant Garamond',serif">${E(c.Horse_Name)}</h3>
+    <button class="more" onclick="closeSh()">✕</button></div>
+    <p class="mut sm">${E(c.Case_ID)} · opened ${E(c.Open_Date)}</p>
+    <p>${chip(c.Status)} ${chip(c.Priority)} <span class="ch c-gry">${E(c.Case_Category)}</span></p>
+    <p>${E(c.Primary_Complaint)}</p>
+    <p class="mut sm">Doctor: ${E(c.Responsible_Doctor)}</p>
+    <p class="mut sm">Change status</p>
+    <div class="row" style="flex-wrap:wrap;justify-content:flex-start;gap:6px">
+      ${['Open','Hospitalized','Follow-up','Closed'].map(s=>`<button class="pill ${c.Status==s?'on':''}" onclick="setStatus(${i},'${s}')">${s}</button>`).join('')}</div>`)}
 function setStatus(i,s){const c=CV[i];
- if(s=='Closed')return form('Close case — outcome',[['o','Outcome','select',opts(['Recovered','Improved','Unchanged','Deteriorated','Lost to follow-up'])]],async v=>{await call('setCaseStatus',{Case_ID:c.Case_ID,Status:s,Outcome:v.o,Row_Version:c.Row_Version})},'Close case');
- call('setCaseStatus',{Case_ID:c.Case_ID,Status:s,Row_Version:c.Row_Version}).then(()=>{closeSh();toast('Status updated');loadList()}).catch(e=>toast(e.message))}
+  if(s=='Closed')return form('Close case — outcome',[['o','Outcome','select',opts(['Recovered','Improved','Unchanged','Deteriorated','Lost to follow-up'])]],
+    async v=>{await call('setCaseStatus',{Case_ID:c.Case_ID,Status:s,Outcome:v.o,Row_Version:c.Row_Version})},'Close case');
+  call('setCaseStatus',{Case_ID:c.Case_ID,Status:s,Row_Version:c.Row_Version})
+    .then(()=>{closeSh();toast('Status updated');loadList()}).catch(e=>toast(e.message))}
 </script></body></html>
